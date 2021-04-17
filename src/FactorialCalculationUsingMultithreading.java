@@ -17,16 +17,16 @@ public class FactorialCalculationUsingMultithreading {
             thread[i]= new MyThread(arr[i]);
             thread[i].start();
         }
-        for (int i = 0; i < thread.length; i++) {
-            thread[i].join();
+        for (MyThread value : thread) {
+            value.join();
         }
-        for (int i = 0; i < thread.length; i++) {
-            System.out.println(thread[i].result);
+        for (MyThread myThread : thread) {
+            System.out.println(myThread.result);
         }
         System.out.println(System.currentTimeMillis()-start);
     }
     private static class MyThread extends Thread{
-        private int num;
+        private final int num;
         private BigInteger result;
 
         public MyThread(int num) {
