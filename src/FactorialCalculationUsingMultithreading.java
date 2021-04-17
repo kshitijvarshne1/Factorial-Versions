@@ -5,12 +5,25 @@
  *   File: FactorialCalculationUsingMultithreading.java
  */
 
+import java.math.BigInteger;
+
 public class FactorialCalculationUsingMultithreading {
     public static void main(String[] args) {
 
     }
-    private class MyThread extends Thread{
+    private static class MyThread extends Thread{
 
+        @Override
+        public void run() {
+            calculation();
+        }
+        private static void calculation(){
+            BigInteger result= BigInteger.ONE;
+            for (int i = 2; i <=num; i++) {
+                result=result.multiply(BigInteger.valueOf(i));
+            }
+            System.out.println(result);
+        }
     }
 }
 
