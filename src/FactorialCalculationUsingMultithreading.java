@@ -12,17 +12,24 @@ public class FactorialCalculationUsingMultithreading {
 
     }
     private static class MyThread extends Thread{
+        private int num;
+        private BigInteger result;
+
+        public MyThread(int num, BigInteger result) {
+            this.num = num;
+            this.result = result;
+        }
 
         @Override
         public void run() {
             calculation();
         }
-        private static void calculation(){
-            BigInteger result= BigInteger.ONE;
-            for (int i = 2; i <=num; i++) {
-                result=result.multiply(BigInteger.valueOf(i));
+        private void calculation(){
+             this.result= BigInteger.ONE;
+            for (int i = 2; i <=this.num; i++) {
+                this.result=this.result.multiply(BigInteger.valueOf(i));
             }
-            System.out.println(result);
+            System.out.println(this.result);
         }
     }
 }
