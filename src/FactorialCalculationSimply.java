@@ -11,8 +11,8 @@ public class FactorialCalculationSimply {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         int [] arr= {1000,2000,3000,4000,5000};
-        for (int i = 0; i < arr.length; i++) {
-            calculation(arr[i]);
+        for (int j : arr) {
+            calculation(j);
         }
         System.out.println(System.currentTimeMillis()-start);
     }
@@ -23,6 +23,5 @@ public class FactorialCalculationSimply {
         }
         System.out.println(result);
     }
-
 }
 
