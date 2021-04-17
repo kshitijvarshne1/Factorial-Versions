@@ -8,16 +8,30 @@
 import java.math.BigInteger;
 
 public class FactorialCalculationUsingMultithreading {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        int [] arr= {1000,2000,3000,4000,5000};
+        MyThread[] thread= new MyThread[arr.length];
 
+        for (int i = 0; i < arr.length; i++) {
+            thread[i]= new MyThread(arr[i]);
+            thread[i].start();
+        }
+        for (int i = 0; i < thread.length; i++) {
+            thread[i].join();
+        }
+        for (int i = 0; i < thread.length; i++) {
+            System.out.println(thread[i].result);
+        }
+        System.out.println(System.currentTimeMillis()-start);
     }
     private static class MyThread extends Thread{
         private int num;
         private BigInteger result;
 
-        public MyThread(int num, BigInteger result) {
+        public MyThread(int num) {
             this.num = num;
-            this.result = result;
+            this.result = BigInteger.ONE;
         }
 
         @Override
@@ -25,12 +39,11 @@ public class FactorialCalculationUsingMultithreading {
             calculation();
         }
         private void calculation(){
-             this.result= BigInteger.ONE;
             for (int i = 2; i <=this.num; i++) {
                 this.result=this.result.multiply(BigInteger.valueOf(i));
             }
-            System.out.println(this.result);
         }
     }
+
 }
 
