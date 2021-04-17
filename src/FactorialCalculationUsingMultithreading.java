@@ -6,5 +6,11 @@
  */
 
 public class FactorialCalculationUsingMultithreading {
+    public static void main(String[] args) {
+
+    }
+    private class MyThread extends Thread{
+
+    }
 }
 
